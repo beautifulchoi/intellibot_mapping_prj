@@ -17,7 +17,7 @@
 * You should have received a copy of the GNU General Public License
 * along with ORB-SLAM2. If not, see <http://www.gnu.org/licenses/>.
 */
-
+#define CV_LOAD_IMAGE_UNCHANGED -1
 #include<iostream>
 #include<algorithm>
 #include<fstream>
@@ -26,9 +26,9 @@
 #include<opencv2/opencv.hpp>
 #include<System.h>
 
-#include<librealsense2/rs.hpp>  // Include RealSense Cross Platform API
+//#include<librealsense2/rs.hpp>  // Include RealSense Cross Platform API
 
-#define UsingWebCam
+//#define UsingWebCam
 
 using namespace std;
 using namespace cv;
@@ -226,7 +226,13 @@ void LoadImages(const string &strAssociationFilename, vector<string> &vstrImageF
                 vector<string> &vstrImageFilenamesD, vector<double> &vTimestamps)
 {
     ifstream fAssociation;
+    if (!fAssociation) {
+       throw runtime_error("path wrong");
+    }
     fAssociation.open(strAssociationFilename.c_str());
+    if (!fAssociation.is_open()) {
+       throw std::runtime_error("Failed to open file: " + strAssociationFilename);
+   }
     while(!fAssociation.eof())
     {
         string s;

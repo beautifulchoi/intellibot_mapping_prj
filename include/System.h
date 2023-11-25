@@ -21,11 +21,13 @@
 
 #ifndef SYSTEM_H
 #define SYSTEM_H
-
+#include <opencv2/imgproc/types_c.h>
+#include <opencv2/opencv.hpp>
+using namespace cv;
+#include <unistd.h>
 #include<string>
 #include<thread>
 #include<opencv2/core/core.hpp>
-
 #include "Tracking.h"
 #include "FrameDrawer.h"
 #include "MapDrawer.h"

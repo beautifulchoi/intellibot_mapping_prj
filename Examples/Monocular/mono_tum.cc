@@ -18,7 +18,7 @@
 * along with ORB-SLAM2. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+#define CV_LOAD_IMAGE_UNCHANGED -1
 #include<iostream>
 #include<algorithm>
 #include<fstream>
@@ -29,7 +29,7 @@
 #include<System.h>
 
 // WebCam으로 카메라를 받아올 수 있을 때 사용
-#define UsingWebCam
+//#define UsingWebCam
 
 
 using namespace std;
@@ -98,8 +98,9 @@ int main(int argc, char **argv)
     vector<string> vstrImageFilenames;
     vector<double> vTimestamps;
     string strFile = string(argv[3])+"/rgb.txt";
+    cout << endl << "READ IMAGES" << endl;
     LoadImages(strFile, vstrImageFilenames, vTimestamps);
-
+    cout << endl << "END OF READ IMAGES" << endl;
     int nImages = vstrImageFilenames.size();
 
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
@@ -113,10 +114,10 @@ int main(int argc, char **argv)
     cout << "Start processing sequence ..." << endl;
     cout << "Images in the sequence: " << nImages << endl << endl;
 
-    ORB_SLAM2::System SLAM(argv[1], argv[2], ORB_SLAM2::System::MONOCULAR, true);
+    // ORB_SLAM2::System SLAM(argv[1], argv[2], ORB_SLAM2::System::MONOCULAR, true);
 
-    cout << endl << "-------" << endl;
-    cout << "Start processing sequence ..." << endl;
+    // cout << endl << "-------" << endl;
+    // cout << "Start processing sequence ..." << endl;
 
     // Main loop
     cv::Mat im;
@@ -187,7 +188,10 @@ void LoadImages(const string &strFile, vector<string> &vstrImageFilenames, vecto
 {
     ifstream f;
     f.open(strFile.c_str());
-
+    if (!f) {
+   std::cerr << "Failed to open file: " << strFile << std::endl;
+   return;
+    }
     // skip first three lines
     string s0;
     getline(f,s0);

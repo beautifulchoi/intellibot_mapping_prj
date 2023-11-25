@@ -18,7 +18,7 @@
 * along with ORB-SLAM2. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+#define CV_LOAD_IMAGE_UNCHANGED -1
 #include<iostream>
 #include<algorithm>
 #include<fstream>
