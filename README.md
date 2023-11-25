@@ -9,7 +9,7 @@
 
 ## 프로젝트 개요
 1. [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2) 코드를 웹캠으로 사용할 수 있도록 변형한 [ORB-SLAM2 with WebCamMonocular & RGBD](https://github.com/Taeyoung96/Depth-estimation-with-ORB-SLAM2)를 사용하여 빌드하였습니다.
-[블로그 설명글](https://taeyoung96.github.io/slamtip/ORBwithWeb/) 
+[참조했던 태영님의 블로그 설명글](https://taeyoung96.github.io/slamtip/ORBwithWeb/) 
 2. 서울시립대학교 창공관 413호를 비디오 스트림으로 촬영하여 데이터셋 구축  
 3. 'Towards Robust Monocular Depth Estimation: Mixing Datasets for Zero-shot Cross-dataset Transfer'([Github](https://github.com/isl-org/MiDaS))를 이용하여 RGB Image Sequence에서 Depth map 추출
 4. 1번에서 참고하였던 블로그와 유사하게 추출한 predicted depth map을 normailzing
